@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Travel Planner | Discover Your Next Adventure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm"
+      id="mainNav"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">AI Travel Planner</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul
+            class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1"
+          >
+            <li class="nav-item">
+              <a class="nav-link" href="#hero">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#flights">Flights</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#hotels">Hotels</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonials">Stories</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero position-relative d-flex align-items-center" id="hero">
+      <div class="hero-overlay"></div>
+      <div class="container position-relative text-center text-white py-5">
+        <p class="text-uppercase letter-space small mb-2 opacity-90">
+          Your journey begins here
+        </p>
+        <h1 class="display-3 fw-bold hero-title mb-3">
+          Explore the World, One Trip at a Time
+        </h1>
+        <p class="lead mx-auto hero-sub col-lg-8 mb-4">
+          Curated tours, trusted partners, and unforgettable memories. Let our
+          AI planner build your itinerary while you search flights and hotels.
+        </p>
+
+        <div class="hero-planner col-xl-10 mx-auto text-start">
+          <div class="hero-chat-bar card border-0 shadow-lg">
+            <div class="card-body p-3 p-md-4">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <span class="hero-chat-badge">AI Planner</span>
+                <span class="small text-white-50"
+                  >Ask for itineraries, flights, or hotels</span
+                >
+              </div>
+              <div
+                id="heroChatMessages"
+                class="hero-chat-messages mb-3"
+                aria-live="polite"
+              >
+                <p class="hero-chat-welcome small text-white-50 mb-0">
+                  Try: &ldquo;5-day trip to Goa in June&rdquo; or &ldquo;Find
+                  flights Delhi to Mumbai on 2026-06-15&rdquo;
+                </p>
+              </div>
+              <form id="heroChatForm" class="hero-chat-form">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg hero-chat-input"
+                    id="heroChatInput"
+                    placeholder="Destination, duration, or search flights &amp; hotels…"
+                    autocomplete="off"
+                    maxlength="2000"
+                    aria-label="Message to AI travel planner"
+                  />
+                  <button
+                    type="submit"
+                    class="btn btn-accent px-4"
+                    id="heroChatSend"
+                    aria-label="Send message"
+                  >
+                    <span class="hero-chat-send-label">Send</span>
+                    <span
+                      class="hero-chat-spinner spinner-border spinner-border-sm ms-1 d-none"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </div>
+              </form>
+              <div class="mt-3">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-light"
+                  id="heroChatClear"
+                >
+                  Clear chat
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="py-5 py-lg-6 section-fade" id="about">
+      <div class="container">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-lg-6">
+            <div class="about-image-wrap rounded-4 overflow-hidden shadow-lg">
+              <img
+                src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80"
+                alt="Traveler overlooking mountains and lake"
+                class="img-fluid w-100"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <span class="badge text-bg-light border mb-3">About Us</span>
+            <h2 class="section-title mb-3">
+              We craft journeys that feel personal
+            </h2>
+            <p class="text-secondary mb-3">
+              Wanderlust Tours is a full-service travel agency built for curious
+              travelers. Since day one, we have focused on honest
+              recommendations, transparent pricing, and itineraries that balance
+              iconic sights with hidden gems.
+            </p>
+            <p class="text-secondary mb-4">
+              Our team lives and breathes travel—from alpine hikes to tropical
+              coastlines—so you can relax knowing every hotel, transfer, and
+              experience is vetted by people who have been there.
+            </p>
+            <ul class="list-unstyled mb-0 about-list">
+              <li class="d-flex align-items-center gap-2 mb-2">
+                <span class="check-dot"></span> Local experts in 40+ countries
+              </li>
+              <li class="d-flex align-items-center gap-2 mb-2">
+                <span class="check-dot"></span> 24/7 support while you are away
+              </li>
+              <li class="d-flex align-items-center gap-2">
+                <span class="check-dot"></span> Flexible booking &amp; payment
+                options
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-5 py-lg-6 section-fade flight-booking-section"
+      id="flights"
+    >
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-10">
+            <div class="text-center mb-4 mb-lg-5">
+              <span class="badge text-bg-light border mb-2"
+                >Flight Booking</span
+              >
+              <h2 class="section-title mb-2">
+                Search &amp; request your flights
+              </h2>
+              <p class="text-secondary col-lg-8 mx-auto mb-0">
+                Tell us where you are flying from and to—we compare partner
+                airlines and email fare options within one business day.
+              </p>
+            </div>
+            <div
+              class="card border-0 shadow-lg flight-booking-card overflow-hidden"
+            >
+              <div class="row g-0">
+                <div
+                  class="col-lg-5 d-none d-lg-block flight-booking-visual"
+                  aria-hidden="true"
+                ></div>
+                <div class="col-lg-7">
+                  <div class="p-4 p-lg-5">
+                    <form
+                      class="needs-validation"
+                      id="flightBookingForm"
+                      novalidate
+                    >
+                      <div class="row g-3">
+                        <div class="col-12">
+                          <label class="form-label d-block mb-2"
+                            >Trip type</label
+                          >
+                          <div
+                            class="btn-group w-100"
+                            role="group"
+                            aria-label="Trip type"
+                          >
+                            <input
+                              type="radio"
+                              class="btn-check"
+                              name="flightTripType"
+                              id="tripRound"
+                              value="round"
+                              checked
+                              autocomplete="off"
+                            />
+                            <label
+                              class="btn btn-outline-accent"
+                              for="tripRound"
+                              >Round trip</label
+                            >
+                            <input
+                              type="radio"
+                              class="btn-check"
+                              name="flightTripType"
+                              id="tripOneWay"
+                              value="oneway"
+                              autocomplete="off"
+                            />
+                            <label
+                              class="btn btn-outline-accent"
+                              for="tripOneWay"
+                              >One way</label
+                            >
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="flightFrom" class="form-label"
+                            >From</label
+                          >
+                          <div class="position-relative airport-ac-wrap">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="flightFrom"
+                              placeholder="Type airport name or IATA code (e.g. LAX)"
+                              required
+                              autocomplete="off"
+                              spellcheck="false"
+                            />
+                            <div class="invalid-feedback">
+                              Enter a departure city or airport.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="flightTo" class="form-label">To</label>
+                          <div class="position-relative airport-ac-wrap">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="flightTo"
+                              placeholder="Type airport name or IATA code (e.g. NRT)"
+                              required
+                              autocomplete="off"
+                              spellcheck="false"
+                            />
+                            <div class="invalid-feedback">
+                              Enter a destination city or airport.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="flightDepart" class="form-label"
+                            >Departure date</label
+                          >
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="flightDepart"
+                            required
+                          />
+                          <div class="invalid-feedback">
+                            Choose a departure date.
+                          </div>
+                        </div>
+                        <div class="col-md-6" id="flightReturnGroup">
+                          <label for="flightReturn" class="form-label"
+                            >Return date</label
+                          >
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="flightReturn"
+                          />
+                          <div
+                            class="invalid-feedback"
+                            id="flightReturnFeedback"
+                          >
+                            Return date is required for round trip.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="flightPassengers" class="form-label"
+                            >Passengers</label
+                          >
+                          <select
+                            class="form-select"
+                            id="flightPassengers"
+                            required
+                          >
+                            <option value="" selected disabled>Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                          </select>
+                          <div class="invalid-feedback">
+                            Select number of passengers.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="flightCabin" class="form-label"
+                            >Cabin class</label
+                          >
+                          <select class="form-select" id="flightCabin" required>
+                            <option value="" selected disabled>Select</option>
+                            <option value="economy">Economy</option>
+                            <option value="premium">Premium economy</option>
+                            <option value="business">Business</option>
+                            <option value="first">First</option>
+                          </select>
+                          <div class="invalid-feedback">
+                            Select a cabin class.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="flightName" class="form-label"
+                            >Full name</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="flightName"
+                            placeholder="As on passport"
+                            required
+                          />
+                          <div class="invalid-feedback">
+                            Enter the lead traveler name.
+                          </div>
+                        </div>
+                        <div class="col-12 pt-2">
+                          <button
+                            type="submit"
+                            class="btn btn-accent btn-lg w-100 w-sm-auto px-5"
+                            id="flightSubmitBtn"
+                          >
+                            <span class="flight-btn-label">Search flights</span>
+                            <span
+                              class="flight-btn-spinner spinner-border spinner-border-sm ms-2 d-none"
+                              role="status"
+                              aria-hidden="true"
+                            ></span>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-5 py-lg-6 section-fade hotel-booking-section"
+      id="hotels"
+    >
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-10">
+            <div class="text-center mb-4 mb-lg-5">
+              <span class="badge text-bg-light border mb-2">Hotel Booking</span>
+              <h2 class="section-title mb-2">Search &amp; request your stay</h2>
+              <p class="text-secondary col-lg-8 mx-auto mb-0">
+                Enter a city, neighborhood, or hotel name and your dates—we
+                surface live options from our hotel partners so you can compare
+                before you book.
+              </p>
+            </div>
+            <div
+              class="card border-0 shadow-lg hotel-booking-card overflow-hidden"
+            >
+              <div class="row g-0 flex-lg-row-reverse">
+                <div
+                  class="col-lg-5 d-none d-lg-block hotel-booking-visual"
+                  aria-hidden="true"
+                ></div>
+                <div class="col-lg-7">
+                  <div class="p-4 p-lg-5">
+                    <form
+                      class="needs-validation"
+                      id="hotelBookingForm"
+                      novalidate
+                    >
+                      <div class="row g-3">
+                        <div class="col-12">
+                          <label for="hotelQuery" class="form-label"
+                            >Destination or hotel</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="hotelQuery"
+                            placeholder="e.g. Goa beach resorts, Taj Mumbai"
+                            required
+                            autocomplete="off"
+                          />
+                          <div class="invalid-feedback">
+                            Enter where you want to stay.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="hotelCheckIn" class="form-label"
+                            >Check-in</label
+                          >
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="hotelCheckIn"
+                            required
+                          />
+                          <div class="invalid-feedback">
+                            Choose a check-in date.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="hotelCheckOut" class="form-label"
+                            >Check-out</label
+                          >
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="hotelCheckOut"
+                            required
+                          />
+                          <div
+                            class="invalid-feedback"
+                            id="hotelCheckOutFeedback"
+                          >
+                            Check-out must be after check-in.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="hotelAdults" class="form-label"
+                            >Adults</label
+                          >
+                          <select class="form-select" id="hotelAdults" required>
+                            <option value="" selected disabled>Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                          </select>
+                          <div class="invalid-feedback">
+                            Select number of adults.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="hotelChildren" class="form-label"
+                            >Children</label
+                          >
+                          <select
+                            class="form-select"
+                            id="hotelChildren"
+                            required
+                          >
+                            <option value="0" selected>0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="hotelSort" class="form-label"
+                            >Sort results by</label
+                          >
+                          <select class="form-select" id="hotelSort" required>
+                            <option value="3" selected>Lowest price</option>
+                            <option value="8">Highest rating</option>
+                            <option value="13">Most reviewed</option>
+                          </select>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="hotelCurrency" class="form-label"
+                            >Currency</label
+                          >
+                          <select
+                            class="form-select"
+                            id="hotelCurrency"
+                            required
+                          >
+                            <option value="INR" selected>INR</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                          </select>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="hotelLeadName" class="form-label"
+                            >Full name</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="hotelLeadName"
+                            placeholder="Lead guest name"
+                            required
+                          />
+                          <div class="invalid-feedback">
+                            Enter the lead guest name.
+                          </div>
+                        </div>
+                        <div class="col-12 pt-2">
+                          <button
+                            type="submit"
+                            class="btn btn-accent btn-lg w-100 w-sm-auto px-5"
+                            id="hotelSubmitBtn"
+                          >
+                            <span class="hotel-btn-label">Search hotels</span>
+                            <span
+                              class="hotel-btn-spinner spinner-border spinner-border-sm ms-2 d-none"
+                              role="status"
+                              aria-hidden="true"
+                            ></span>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 py-lg-6 section-fade" id="services">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge text-bg-light border mb-2">Services</span>
+          <h2 class="section-title mb-2">Everything you need in one place</h2>
+          <p class="text-secondary col-lg-7 mx-auto mb-0">
+            From landing to wheels-up home, we handle the details so you can
+            stay present on the adventure.
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-3">
+            <div
+              class="card service-card h-100 border-0 shadow-sm text-center p-4"
+            >
+              <div class="service-icon mx-auto mb-3">🏨</div>
+              <h5 class="card-title">Hotel Booking</h5>
+              <p class="card-text text-secondary small mb-0">
+                Boutique stays and trusted chains at negotiated rates—with
+                upgrades when available.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div
+              class="card service-card h-100 border-0 shadow-sm text-center p-4"
+            >
+              <div class="service-icon mx-auto mb-3">🧭</div>
+              <h5 class="card-title">Guided Tours</h5>
+              <p class="card-text text-secondary small mb-0">
+                Small-group and private guides who know culture, timing, and the
+                best photo stops.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div
+              class="card service-card h-100 border-0 shadow-sm text-center p-4"
+            >
+              <div class="service-icon mx-auto mb-3">🏔️</div>
+              <h5 class="card-title">Adventure Activities</h5>
+              <p class="card-text text-secondary small mb-0">
+                Hiking, diving, safari, and more—matched to your fitness level
+                and comfort zone.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div
+              class="card service-card h-100 border-0 shadow-sm text-center p-4"
+              href="#flights"
+            >
+              <div class="service-icon mx-auto mb-3">✈️</div>
+              <h5 class="card-title">Flights &amp; Transfers</h5>
+              <p class="card-text text-secondary small mb-0">
+                Smart routings and meet-and-greet transfers so arrivals feel
+                effortless.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 py-lg-6 bg-alt section-fade" id="testimonials">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge text-bg-light border mb-2">Testimonials</span>
+          <h2 class="section-title mb-2">Travelers who went with Wanderlust</h2>
+          <p class="text-secondary col-lg-7 mx-auto mb-0">
+            Real trips, real smiles—here is what our guests remember most.
+          </p>
+        </div>
+        <div class="row g-4 justify-content-center">
+          <div class="col-lg-4 col-md-6">
+            <div class="card testimonial-card border-0 shadow-sm h-100 p-4">
+              <div class="d-flex gap-3 align-items-start mb-3">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
+                  alt="Guest"
+                  class="rounded-circle testimonial-avatar"
+                />
+                <div>
+                  <h6 class="mb-0">Maya Richardson</h6>
+                  <small class="text-secondary">Couple trip · Italy</small>
+                </div>
+              </div>
+              <p class="text-secondary small mb-0">
+                “Every hotel felt special and our guide in Rome knew how to
+                dodge the crowds. Flawless pacing from start to finish.”
+              </p>
+              <div class="text-warning small mt-3">★★★★★</div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card testimonial-card border-0 shadow-sm h-100 p-4">
+              <div class="d-flex gap-3 align-items-start mb-3">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+                  alt="Guest"
+                  class="rounded-circle testimonial-avatar"
+                />
+                <div>
+                  <h6 class="mb-0">James Okonkwo</h6>
+                  <small class="text-secondary">Family safari · Kenya</small>
+                </div>
+              </div>
+              <p class="text-secondary small mb-0">
+                “The kids still talk about the jeep rides. Support answered
+                within minutes when a flight shifted—huge peace of mind.”
+              </p>
+              <div class="text-warning small mt-3">★★★★★</div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card testimonial-card border-0 shadow-sm h-100 p-4">
+              <div class="d-flex gap-3 align-items-start mb-3">
+                <img
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80"
+                  alt="Guest"
+                  class="rounded-circle testimonial-avatar"
+                />
+                <div>
+                  <h6 class="mb-0">Elena Vasquez</h6>
+                  <small class="text-secondary"
+                    >Solo adventure · Patagonia</small
+                  >
+                </div>
+              </div>
+              <p class="text-secondary small mb-0">
+                “Thoughtful pacing for solo travel, safe transfers, and views I
+                will carry forever. Already planning the next one.”
+              </p>
+              <div class="text-warning small mt-3">★★★★★</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row g-4 g-lg-5">
+          <div class="col-lg-5">
+            <h3 class="h4 mb-3">Wanderlust Tours</h3>
+            <p class="opacity-85 small mb-4">
+              Independent travel designers helping you see more of the
+              world—with less stress and more wonder.
+            </p>
+            <div class="d-flex gap-3 social-links flex-wrap">
+              <a
+                href="https://facebook.com"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                >Fb</a
+              >
+              <a
+                href="https://instagram.com"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                >Ig</a
+              >
+              <a
+                href="https://twitter.com"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X"
+                >X</a
+              >
+              <a
+                href="https://youtube.com"
+                class="social-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                >Yt</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <h4 class="h6 text-uppercase letter-space mb-3">Quick message</h4>
+            <p class="opacity-85 small mb-3">
+              Prefer the footer form? Same team—responses merge with your main
+              inquiry.
+            </p>
+            <form class="needs-validation" id="footerContactForm" novalidate>
+              <div class="mb-2">
+                <label for="footerName" class="visually-hidden">Name</label>
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="footerName"
+                  placeholder="Name"
+                  required
+                />
+                <div class="invalid-feedback">Name required.</div>
+              </div>
+              <div class="mb-2">
+                <label for="footerEmail" class="visually-hidden">Email</label>
+                <input
+                  type="email"
+                  class="form-control form-control-sm"
+                  id="footerEmail"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label for="footerMessage" class="visually-hidden"
+                  >Message</label
+                >
+                <textarea
+                  class="form-control form-control-sm"
+                  id="footerMessage"
+                  rows="2"
+                  placeholder="Message"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-sm btn-accent w-100">
+                Send
+              </button>
+            </form>
+          </div>
+          <div class="col-lg-3">
+            <h4 class="h6 text-uppercase letter-space mb-3">Visit</h4>
+            <p class="opacity-85 small mb-2">
+              128 Harbor Lane, Suite 400<br />Portland, OR 97201
+            </p>
+            <p class="opacity-85 small mb-0">
+              <a href="tel:+15551234567" class="text-white text-decoration-none"
+                >+1 (555) 123-4567</a
+              ><br />
+              <a
+                href="mailto:hello@wanderlust.tours"
+                class="text-white text-decoration-none"
+                >hello@wanderlust.tours</a
+              >
+            </p>
+          </div>
+        </div>
+        <hr class="border-secondary mt-5 mb-3 opacity-25" />
+        <p class="small text-center opacity-75 mb-0">
+          &copy; <span id="year"></span> Wanderlust Tours. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <button
+      type="button"
+      class="back-to-top btn btn-accent rounded-circle shadow"
+      id="backToTop"
+      aria-label="Back to top"
+    >
+      ↑
+    </button>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="formToast"
+        class="toast align-items-center text-bg-dark border-0"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body" id="toastBody">
+            Thanks—we will be in touch.
+          </div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      window.FLIGHT_API_URL = window.FLIGHT_API_URL || "/api/flights";
+      window.HOTEL_API_URL = window.HOTEL_API_URL || "/api/hotels";
+      window.PLANNER_API_URL = window.PLANNER_API_URL || "/api/planner/chat";
+    </script>
+    <script src="js/airport-data.js"></script>
+    <script src="js/airport-autocomplete.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/planner-shared.js"></script>
+    <script src="js/planner-chat.js"></script>
+  </body>
+</html>
